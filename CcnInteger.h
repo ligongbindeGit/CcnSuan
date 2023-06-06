@@ -1,28 +1,28 @@
 #pragma once		   //2023年223日 中国 广西 全州人 李公斌编写的 计算大数的乘值 例子: 51*43 =+2193
 #include <assert.h>
 #define __李公斌的 
-#define __李公斌的声明  static
-#define __李公斌写的代码命名区 
+#define __李公斌声明  static
+#define __李公斌写的命名区代码 
 using Ccn32 = int;
 using arryPtr = long long unsigned int ( * ) [ 23 ];
-__李公斌的声明 int Round ( int v , int V ) {
+__李公斌声明 int Round ( int v , int V ) {
 	return  ( v / V ) + ( v % V > 0 ) ;
 }
-__李公斌的
+__李公斌写的命名区代码
 class CcnInteger
 {
 	public:
 	friend void  shezhizhi ( CcnInteger &Z , char const *const pch );
 	using 	data_type = long long unsigned int;
-	__李公斌的声明
+	__李公斌声明
 		int const Total = 9;
-	__李公斌的声明
+	__李公斌声明
 		int const Max = 999999999;
-	__李公斌的声明
+	__李公斌声明
 		int const Radix = Max + 1;
-	__李公斌的声明
+	__李公斌声明
 		int const Way = 3;
-	__李公斌的声明
+	__李公斌声明
 		data_type const FLAGEND = 11112224444333111122ull;
 	operator arryPtr ( ) {
 		return 	( arryPtr ) &_V [ 0 ];
@@ -94,7 +94,7 @@ class CcnInteger
 };
 __李公斌的
 using type = CcnInteger::data_type;
-__李公斌写的代码命名区
+__李公斌写的命名区代码
 void suan3way ( type  vX [ 3 ] , type vY [ 3 ] , type vZ [ 1 + 2 + 3 ] ) {
 	vZ [ 0x00 + 0x00 ] +=/**/+vX [ 0x00 + 0x00 ] * vY [ 0x00 + 0x00 ];
 	vZ [ 0x01 + 0x00 ] +=/**/+vX [ 0x00 + 0x00 ] * vY [ 0x01 + 0x00 ] + vX [ 0x01 + 0x00 ] * vY [ 0x00 + 0x00 ];
@@ -102,7 +102,7 @@ void suan3way ( type  vX [ 3 ] , type vY [ 3 ] , type vZ [ 1 + 2 + 3 ] ) {
 	vZ [ 0x03 + 0x00 ] +=/**/+vX [ 0x01 + 0x00 ] * vY [ 0x02 + 0x00 ] + vX [ 0x02 + 0x00 ] * vY [ 0x01 + 0x00 ];
 	vZ [ 0x04 + 0x00 ] +=/**/+vX [ 0x02 + 0x00 ] * vY [ 0x02 + 0x00 ];
 }
-__李公斌写的代码命名区
+__李公斌写的命名区代码
 //设置值
 void  shezhizhi ( CcnInteger &Z , char const *const pch ) {
 	using 	d_t = CcnInteger::data_type;
@@ -137,7 +137,7 @@ void  shezhizhi ( CcnInteger &Z , char const *const pch ) {
 	else
 		Z.__setneg ( 0 );
 }
-__李公斌写的代码命名区
+__李公斌写的命名区代码
 void multiply ( CcnInteger &X , CcnInteger &Y , CcnInteger &Z ) {
 	int nX = X.length ( );
 	int nY = Y.length ( );
@@ -172,7 +172,7 @@ void multiply ( CcnInteger &X , CcnInteger &Y , CcnInteger &Z ) {
 	}
 	Z.__setneg ( X.isneg ( ) +Y.isneg ( ) );
 }
-__李公斌写的代码命名区
+__李公斌写的命名区代码
 #include <iostream>
 #include <iomanip>				    
 #include <string>		
@@ -196,7 +196,7 @@ std::ostream &operator<<( std::ostream &aa , CcnInteger &vA )
 	aa << std::endl;
 	return aa;
 }
- __李公斌写的代码命名区
+ __李公斌写的命名区代码
 void CcnSuan(){
 	CcnInteger  Z , X , Y ;
 	std::string a,b;
@@ -206,7 +206,7 @@ void CcnSuan(){
 	multiply ( X , Y , Z );
 	std::cout << Z << std::endl;
 }
-__李公斌写的代码命名区
+__李公斌写的命名区代码
 void CcnRun ( ) {
 	while ( 2==1+1)CcnSuan ( );
 }
