@@ -1,8 +1,8 @@
-/*----------------------------------------------------------------*/
-//2023Äê223ÈÕ ÖĞ¹ú ¹ãÎ÷ È«ÖİÈË Àî¹«±ó
-//ISO C++14   	Visual Studio 2022 (v143)
-//±àĞ´µÄ ¼ÆËã´óÊıµÄ³ËÖµ Àı×Ó: 51*43 =+2193	   
-/*----------------------------------------------------------------*/
+ï»¿/*--------------------------------------------------------------------------------------------------------------------------*/
+//2023å¹´223æ—¥ ä¸­å›½ å¹¿è¥¿ å…¨å·äºº æå…¬æ–Œ																						 //
+//ISO C++14   	Visual Studio 2022 (v143)																				     //
+//--ç¼–å†™çš„ è®¡ç®—å¤§æ•°çš„ä¹˜å€¼ ä¾‹å­: 51*43 =+2193	   																		 //
+/*--------------------------------------------------------------------------------------------------------------------------*/
 #pragma once		   
 #include <assert.h>
 #define ____S___  static
@@ -10,30 +10,30 @@ using CcnI32 = int;
 using CcnU32 = unsigned  int;
 using arryPtr = long long unsigned int ( * ) [ 23 ];
 ____S___ int Round ( int v , int V ) { return  ( v / V ) + ( v % V > 0 ) ; }
-//Àî¹«±óĞ´µÄÃüÃûÇø´úÂë
+//æå…¬æ–Œå†™çš„å‘½ååŒºä»£ç 
 class CcnInteger
 {
 	public:
 	friend void  shezhizhi ( CcnInteger &Z , char const *const pch );
-	 /*Àî¹«±óÉùÃ÷:  ÎŞ·ûºÅµÄ64±ÈÌØµÄdata_type*/
+	 /*æå…¬æ–Œå£°æ˜:  æ— ç¬¦å·çš„64æ¯”ç‰¹çš„data_type*/
 	using 	data_type = long long unsigned int;
-	____S___ /*Àî¹«±óÉùÃ÷: data_typeĞÍ±äÁ¿´æ¾Å¸öÊ®½øÖÆÁ¿×Ö*/
+	____S___ /*æå…¬æ–Œå£°æ˜: data_typeå‹å˜é‡å­˜ä¹ä¸ªåè¿›åˆ¶é‡å­—*/
 		CcnI32 const Total = 9;
-	____S___ /*Àî¹«±óÉùÃ÷: data_typeĞÍµÄ×î´óÖµÊÇ999999999*/
+	____S___ /*æå…¬æ–Œå£°æ˜: data_typeå‹çš„æœ€å¤§å€¼æ˜¯999999999*/
 		CcnI32 const Max = 999999999;
-	____S___ /*Àî¹«±óÉùÃ÷: data_typeĞÍµÄ»ùÊıR=999999999+1=1000000000*/
+	____S___ /*æå…¬æ–Œå£°æ˜: data_typeå‹çš„åŸºæ•°R=999999999+1=1000000000*/
 		CcnI32 const Radix = Max + 1;
-	____S___ /*Àî¹«±óÉùÃ÷: ÓÃÒ»Ôª¶àÏîÊ½¼ÆËã³Ë*/
-		CcnI32 const Way = 3;  //Way=3Ê± ÓÃµÄÊÇÒ»ÔªÈıÏîÊ½
-	____S___ /*Àî¹«±óÉùÃ÷: ·ÖÅäÄÚ´æÎ²²¿°²È«±êÖ¾FLAGEND*/
+	____S___ /*æå…¬æ–Œå£°æ˜: ç”¨ä¸€å…ƒå¤šé¡¹å¼è®¡ç®—ä¹˜*/
+		CcnI32 const Way = 3;  //Way=3æ—¶ ç”¨çš„æ˜¯ä¸€å…ƒä¸‰é¡¹å¼
+	____S___ /*æå…¬æ–Œå£°æ˜: åˆ†é…å†…å­˜å°¾éƒ¨å®‰å…¨æ ‡å¿—FLAGEND*/
 		data_type const FLAGEND = 11112224444333111122ull;
-	//ÓÃÀ´²é¿´ÄÚ´æÀï´æµÄÁ¿......
+	//ç”¨æ¥æŸ¥çœ‹å†…å­˜é‡Œå­˜çš„é‡......
 	operator arryPtr( ) { return ( arryPtr ) &_V [ 0 ]; }
 	private:
-	CcnU32 _Dneg : 1;  //1±ÈÌØ·ûºÅÎ»±íÊ¾Õı¸ºÁ¿ 1Îª¸º;  0ÎªÕı
-	CcnI32 _Alen;	         //_VÀï·ÖÅäÁË_Alen¸ödata_typeĞÍÁ¿
-	CcnI32 _Dlen;	         //_VÀï´æÁË_Dlen¸ödata_typeĞÍÁ¿
-	data_type *_V ;	     //´æÁ¿µÄÄÚ´æ	_V[4] _V[3] _V[2] _V[1] _V[0]
+	CcnU32 _Dneg : 1;  //1æ¯”ç‰¹ç¬¦å·ä½è¡¨ç¤ºæ­£è´Ÿé‡ 1ä¸ºè´Ÿ;  0ä¸ºæ­£
+	CcnI32 _Alen;	         //_Vé‡Œåˆ†é…äº†_Alenä¸ªdata_typeå‹é‡
+	CcnI32 _Dlen;	         //_Vé‡Œå­˜äº†_Dlenä¸ªdata_typeå‹é‡
+	data_type *_V ;	     //å­˜é‡çš„å†…å­˜	_V[4] _V[3] _V[2] _V[1] _V[0]
 	data_type *_Ve ;	     //......
 	public:
 	CcnInteger ( ) {
@@ -82,19 +82,20 @@ class CcnInteger
 		_Dlen = CcnI32 ( ) ;
 	}
 };
-//Àî¹«±óµÄ
+//æå…¬æ–Œçš„
 using type = CcnInteger::data_type;
-//Àî¹«±óĞ´µÄÃüÃûÇø´úÂë
+//æå…¬æ–Œå†™çš„å‘½ååŒºä»£ç 
 void suan3way ( type  vX [ 3 ] , type vY [ 3 ] , type vZ [ 1 + 2 + 3 ] )
-{
+{	 //è¿™æ˜¯åè¿›åˆ¶é‡ç”¨ä¸€å…ƒä¸‰é¡¹å¼ ç®—ä¹˜
+	 //(vX[2]Ã—rÂ²+vX[1]Ã—rÂ¹+vX[0]Ã—rÂº)Ã—(vY[2]Ã—rÂ²+vY[1]Ã—rÂ¹+vY[0]Ã—rÂº)     (r=10;100;1000;1000;...1000000000)
 	vZ [ 0x00 + 0x00 ] +=/**/+vX [ 0x00 + 0x00 ] * vY [ 0x00 + 0x00 ];
 	vZ [ 0x01 + 0x00 ] +=/**/+vX [ 0x00 + 0x00 ] * vY [ 0x01 + 0x00 ] + vX [ 0x01 + 0x00 ] * vY [ 0x00 + 0x00 ];
 	vZ [ 0x02 + 0x00 ] +=/**/+vX [ 0x00 + 0x00 ] * vY [ 0x02 + 0x00 ] + vX [ 0x01 + 0x00 ] * vY [ 0x01 + 0x00 ] + vX [ 0x02 + 0x00 ] * vY [ 0x00 + 0x00 ];
 	vZ [ 0x03 + 0x00 ] +=/**/+vX [ 0x01 + 0x00 ] * vY [ 0x02 + 0x00 ] + vX [ 0x02 + 0x00 ] * vY [ 0x01 + 0x00 ];
 	vZ [ 0x04 + 0x00 ] +=/**/+vX [ 0x02 + 0x00 ] * vY [ 0x02 + 0x00 ];
 }
-//Àî¹«±óĞ´µÄÃüÃûÇø´úÂë
-//ÉèÖÃÖµ
+//æå…¬æ–Œå†™çš„å‘½ååŒºä»£ç 
+//è®¾ç½®å€¼
 void  shezhizhi ( CcnInteger &Z , char const *const pch )
 {
 	using 	d_t = CcnInteger::data_type;
@@ -129,7 +130,7 @@ void  shezhizhi ( CcnInteger &Z , char const *const pch )
 	else
 		Z.__setneg ( 0 );
 }
-//Àî¹«±óĞ´µÄÃüÃûÇø´úÂë
+//æå…¬æ–Œå†™çš„å‘½ååŒºä»£ç 
 void multiply ( CcnInteger &X , CcnInteger &Y , CcnInteger &Z ) {
 	CcnI32 nX = X.length ( );
 	CcnI32 nY = Y.length ( );
@@ -146,7 +147,7 @@ void multiply ( CcnInteger &X , CcnInteger &Y , CcnInteger &Z ) {
 		for ( iY = CcnI32 ( ); iY < nY; iY += ::CcnInteger::Way ) {
 			::suan3way ( &X [ iX ] , &Y [ iY ] , &Z [ iX + iY ] )	 ;
 		}
-		//½øÎ»
+		//è¿›ä½
 		{
 			static auto Min = [ ] ( CcnI32 a , CcnI32 b ) { return a < b ? a : b; } ;
 			CcnI32 e = Min ( iX + nY + CcnInteger::Way , nZ );
@@ -164,7 +165,7 @@ void multiply ( CcnInteger &X , CcnInteger &Y , CcnInteger &Z ) {
 #include <iostream>
 #include <iomanip>				    
 #include <string>			
-//Àî¹«±óĞ´µÄÃüÃûÇø´úÂë
+//æå…¬æ–Œå†™çš„å‘½ååŒºä»£ç 
 std::ostream &operator<<( std::ostream &aa , CcnInteger &vA )
 {
 	using d_t = CcnInteger::data_type;
@@ -185,7 +186,7 @@ std::ostream &operator<<( std::ostream &aa , CcnInteger &vA )
 	aa << std::endl;
 	return aa;
 }
-//Àî¹«±óĞ´µÄÃüÃûÇø´úÂë
+//æå…¬æ–Œå†™çš„å‘½ååŒºä»£ç 
 void CcnSuan ( )
 {
 	CcnInteger  Z , X , Y ;
@@ -204,8 +205,7 @@ void CcnSuan ( )
 
 
 
-
-//Àî¹«±óĞ´µÄÃüÃûÇø´úÂë
+//æå…¬æ–Œå†™çš„å‘½ååŒºä»£ç 
 void CcnRun ( )
 {
 	while ( 2 == 1 + 1 )CcnSuan ( );
