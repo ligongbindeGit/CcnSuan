@@ -1,7 +1,7 @@
 ﻿/*====--- ====--- ====--- ====--- ====--- ====--- ====---*/
-//2023年223日 中国 广西 全州人 李公斌学士																						           //
-//用 ISO c++14   	Visual Studio 2022 (v143)																				         //
-//--编写的 计算大数的乘值 例子: 51×43 =+2193	   															    //
+//2023年223日 中国 广西 全州人 李公斌学士																             //
+//用 ISO c++14   	Visual Studio 2022 (v143)																			           //
+//编写的 计算大数的乘值 例子: 51×43 =+2193	   															         //
 /*====--- ====--- ====--- ====--- ====--- ====--- ====---*/
 #pragma once		   
 #include <assert.h>
@@ -13,37 +13,36 @@ ____S___ int Round ( int v , int const N ) { return  ( v / N ) + ( v % N > 0 ) ;
 //
 class CcnInteger
 {
-	public:
+public:
 	friend void  shezhizhi ( CcnInteger &c , char const *const pch );
-	 /*李公斌学士声明:  64比特的无符号 data_type */
+	/*办声明:  64比特的无符号 data_type */
 	using 	data_type = long long unsigned int;
-	using 	data_pointer  =data_type*; 
-	using 	data_reference  =data_type&; 
-	____S___ /*李公斌学士声明: data_type型变量存九个十进制量字*/
+	using 	data_pointer = data_type *;
+	using 	data_reference = data_type &;
+	____S___ /*办声明: data_type型变量存九个十进制量字*/
 		CcnI32 const Total = 9;
-	____S___ /*李公斌学士声明: data_type型的最大值是999999999*/
+	____S___ /*办声明: data_type型的最大值是999999999*/
 		data_type  const Max = 999999999;
-	____S___ /*李公斌学士声明: data_type型的基数R=999999999+1=1000000000*/
+	____S___ /*办声明: data_type型的基数R=999999999+1=1000000000*/
 		data_type  const Radix = Max + 1;
-	____S___ /*李公斌学士声明: 用一元多项式计算乘*/
+	____S___ /*办声明: 用一元多项式计算乘*/
 		CcnI32 const Way = 1 + 1 + +1;  //Way=3时 用的是一元三项式
-	____S___ /*李公斌学士声明: 分配内存的尾部存了安全标志FLAGEND*/
+	____S___ /*办声明: 分配内存的尾部存了安全标志FLAGEND*/
 		data_type const FLAGEND = 11112224444333111122ull;
-	    /*李公斌学士声明: 这个arryPtr  调试代码时查看内存里存的量.....*/
-	    operator arryPtr( ) { return ( arryPtr ) &_V [ 0 ]; }
-	private:
-	CcnU32 _Dneg : 1;    //1比特符号位表示正负量 1为负;  0为正
-	CcnI32 _Alen;	           // 在一组变量_V 里 分了_Alen+1  个  data_type 型量
-	CcnI32 _Dlen;	           // 在一组变量_V 里 存了_Dlen      个  data_type 型量
-	data_pointer _V ;	     //一组变量	[_Alen]......_V[4] _V[3] _V[2] _V[1] _V[0]
-	data_pointer _Ve ;	   //......
-	public:
-	CcnInteger ( ) {
-		_Dneg = _Alen = _Dlen = CcnI32 ( ); _V = _Ve = ( data_type * ) 0;	    //......
+	/*办声明: 这个arryPtr  调试代码时查看内存里存的量.....*/
+	operator arryPtr( ) { return ( arryPtr ) &_V [ 0 ]; }
+private:
+	CcnU32 _Dneg : 1;     //用其后1比特位表示_V里存的是正量或负量
+	CcnI32 _Alen={};	       // 在一组变量_V   分了_Alen+1  个  data_type 型量
+	CcnI32 _Dlen{};	         // 在一组变量_V  存了_Dlen 个  data_type 型量
+	data_pointer _V= data_pointer();	     //一组变量	[_Alen]......_V[4] _V[3] _V[2] _V[1] _V[0]
+	data_pointer _Ve{};	   //......
+public:
+	CcnInteger ( ):_Dneg(0){
 	}
 	explicit
-		CcnInteger ( CcnI32 lenh ) { resize ( lenh ) ; zero ( ); }
-	~CcnInteger ( ) { delete [ ] _V; /*释放分出的内存*/}
+		CcnInteger ( CcnI32 lenh )	:CcnInteger() { resize ( lenh ) ; zero ( ); }
+	~CcnInteger ( ){ delete [ ] _V; /*释放分出的内存*/ }
 	void  resize ( CcnI32 alloclength ) {
 		assert ( alloclength > 0 && alloclength < ( ~0u >> 1 ) );
 		_Alen = Round ( alloclength , CcnInteger::Way ) * CcnInteger::Way; _Dlen = CcnI32 ( ); delete [ ] _V;
@@ -76,14 +75,14 @@ class CcnInteger
 		_Dlen = CcnI32 ( ) ;
 	}
 };
-//李公斌学士写的命名区代码
+//办写的命名区代码
 //设置值
 void  shezhizhi ( CcnInteger &d , char const *const pch )
 {
 	using 	d_t = CcnInteger::data_type;
-   //pd
-   // +987654321
-  //                      pe;
+	//pd
+	// +987654321
+ //                      pe;
 	char const *pd = pch;
 	char const *pe = pch;
 	if ( *pd == '+' || *pd == '-' ) pd++;
@@ -108,13 +107,13 @@ void  shezhizhi ( CcnInteger &d , char const *const pch )
 	}
 	d.__setlength ( i );
 	if ( pch [ 0 ] == '-' )
-	d.__setneg ( 1 );
+		d.__setneg ( 1 );
 	else
 		d.__setneg ( 0 );
 }
-//李公斌学士的
+//办的类型
 using type = CcnInteger::data_type;
-//李公斌学士写的命名区代码	 见内存(办索引)重指针
+//办写的命名区代码	 见内存(办索引)重指针
 void suan3way ( type  a [ 1 + 2 ] , type b [ 1 + 2 ] , type c [ 1 + 2 + 3 ] )
 {	 //这是十进制量用一元三项式 算乘
 	 //(a[2]×r²+a[1]×r¹+a[0]×rº)×(b[2]×r²+b[1]×r¹+b[0]×rº)     (r=10;100;1000;1000;...1000000000)
@@ -124,7 +123,7 @@ void suan3way ( type  a [ 1 + 2 ] , type b [ 1 + 2 ] , type c [ 1 + 2 + 3 ] )
 	c [ 0x03 + 0x00 ] +=/**/+a [ 0x01 + 0x00 ] * b [ 0x02 + 0x00 ] + a [ 0x02 + 0x00 ] * b [ 0x01 + 0x00 ];
 	c [ 0x04 + 0x00 ] +=/**/+a [ 0x02 + 0x00 ] * b [ 0x02 + 0x00 ];
 }
-//李公斌学士写的命名区代码
+//办写的命名区代码
 void multiply (
 	const CcnInteger &a , CcnI32 const ia1 , CcnI32 const ia2 ,
 	const CcnInteger &b , CcnI32 const ib1 , CcnI32 const ib2 ,
@@ -145,7 +144,7 @@ void multiply (
 		}
 		{//进位
 
-			static auto Min = [ ] ( CcnI32 a , CcnI32 b ) { return a < b ? a : b; } ;
+			static auto Min = [] ( CcnI32 a , CcnI32 b ) { return a < b?a:b; } ;
 
 			type *c1 = &c [ ia + 0 ] , *c2 = &c [ Min ( ia + ib2 + CcnInteger::Way , iC2 ) ];
 			for ( ; c1 < c2; c1++ ) {
@@ -167,11 +166,10 @@ void multiply ( CcnInteger &a , CcnInteger &b , CcnInteger &c ) {
 	c.__setlength ( nC );
 	multiply ( a , 0 , a.length ( ) , b , 0 , b.length ( ) , c , 0 + 0 );
 }
-
-#include <iostream>
-#include <iomanip>				    
+#include <iostream> 
+#include <iomanip>	 
 #include <string>			
-//李公斌学士写的命名区代码
+//办写的命名区代码
 std::ostream &operator<<( std::ostream &aa , CcnInteger &a )
 {
 	using d_t = CcnInteger::data_type;
@@ -192,7 +190,7 @@ std::ostream &operator<<( std::ostream &aa , CcnInteger &a )
 	aa << std::endl;
 	return aa;
 }
-//李公斌学士写的命名区代码
+//办写的命名区代码
 void CcnSuan ( )
 {
 	CcnInteger  c , a , b ;
@@ -205,8 +203,11 @@ void CcnSuan ( )
 	multiply ( a , b , c );
 	std::cout << c << std::endl;
 }
-//李公斌学士写的命名区代码
+//
+//
+//办写的命名区代码
 void CcnRun ( )
 {
 	while ( 2 == 1 + 1 )CcnSuan ( );
 }
+/////////////////////////////// 
